@@ -43,13 +43,20 @@ Tecan devices are used to automate pipetting activities.
             pickup and set-down in the Tecan system.
  - *RoMa* - Robotic Manipulator Arm; similar to LiHa but moves palettes instead
             of liquids.
- - *Wash*
- - *Flush*
- - *FaWa*
- - *Waste*
- - *Init*
- - *Delute*
- - *Aspirate*
- - *Dispense*
- - *IV*
- - *OV*
+ - *Wash* - Clean the tips
+ - *Flush* - push clean water through the whole piping system
+ - *FaWa* - fast wash; another way to say *flush*
+ - *Waste* - there are two types of waste: fluid waste, e.g. from cleaning, and
+             one-time tips
+ - *Init* - putting all the arms of the Tecan device in their starting
+            position, checking all the hardware components, and locking the
+            position
+ - *Aspirate* - a step of the pipetting activity; suck in some material into
+                the tip
+ - *Dispense* - a step of the pipetting activity; push out some material from
+                the tip
+ - *Delute* - TODO
+ - *IV* - the position for input into the 3-way valve that controls the water
+          level in the tips
+ - *OV* - the position for output into the 3-way valve that controls the water
+          level in the tips
