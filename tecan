@@ -23,7 +23,7 @@ if action == "firmware":
 
 
   '''
-  PIF		FAKE INITIALIZATION  X/Y/Z - AXIS:               
+  Command: PIF - FAKE INITIALIZATION  X/Y/Z - AXIS:
 The PIF command  tells the firmware that all axis have been initialized, however, no mechanical initialization is executed. The current position coordinates of each axis are still valid. If power is disconnected and turned on, using the PIF command will give all axis position the position value of  zero. CAUTION: Incorrect usage of this command may damage the Instrument.
 EXAMPLE: #A1PIF
 Fake initialization of the Arm.
@@ -31,9 +31,7 @@ RESPONSE: none
 GENERATED ERRORS: none.
   '''
   '''
-  PAA
-X, Y, Ys, Z1, Z2, Z3, Z4, Z5, Z6, Z7, Z8
-POSITION ABSOLUTE FOR ALL AXIS:
+  Command: PAA - MOVE AXISES X, Y, Ys, Z1, Z2, Z3, Z4, Z5, Z6, Z7, Z8; POSITION ABSOLUTE FOR ALL AXIS:
 The PAA command moves the X/Y/Z-axis to the entered coordinates in the absolute field. After using this command, the Z-travel heights, set with the SHZ command is in effect. If no Z-travels are set by SHZ command the Z-drives move to init position while traveling. The number of Z parameter depends on the number of installed tips.
 X:	distance in 0.1 mm  [(-InitOffset + 10)...X-Range set by SRA cmd] 
 Y:	distance in 0.1 mm  [(-InitOffset + 10)...Y-Range set by SRA cmd]  of tip 1.
@@ -137,9 +135,7 @@ elif action == "lihapos":
       t.do_cmd("RP"+axis+"0","A1")
 
   '''
-  RPZ
-Selector	
-REPORT CURRENT PARAMETER FOR Z-AXIS:
+  Command: RPZ - REPORT CURRENT PARAMETER FOR Z-AXIS:
 This command reports the current parameter of the Z-axis. Only one axis parameter can be reported at a time.
 Selector:	0 = 	Report current position in 1/10 mm
 		1 = 	Report Acceleration in 1/10 mm/s2
@@ -193,8 +189,7 @@ elif action == "liha_ys":
 
 
   '''
-  PRZ		+/- Z1*, ... +/- Z7*, +/- Z8*
-POSITION RELATIVE FOR Z-AXIS:
+  Command: PRZ - +/- Z1*, ... +/- Z7*, +/- Z8* POSITION RELATIVE FOR Z-AXIS:
 Moves all installed tips individually in the Z-axis to positions relative to there present position, leaving the other axis unchanged. The init position is equal to the range set by the SRA command. The zero position is somewhere near the worktable. The number of Z parameter depends on the number of installed tips.
 +/-Z:	distance in 0.1 mm  [(-InitOffset + 10)...Z-range set by SRA cmd]
 EXAMPLE: #A1PRZ100,-50,100,-100,50,100,200,-50
@@ -209,8 +204,7 @@ elif action == "liha_rz":
   #t.do_cmd("PRZ"+xpos,"A1")
 
   '''
-  PAZ		Z1*, Z2*, Z3*, Z4*, Z5*, Z6*, Z7*, Z8*
-POSITION ABSOLUTE FOR Z-AXIS:
+  Command: PAZ - Z1*, Z2*, Z3*, Z4*, Z5*, Z6*, Z7*, Z8* POSITION ABSOLUTE FOR Z-AXIS:
 Moves all installed tips individually to absolute position,  leaving the X and Y axis position unchanged. The init position is equal to the range set by the SRA command. The zero position is somewhere near the worktable. The number of Z parameter depends on the number of installed tips.
 Zi:	distance in 0.1 mm  [(-InitOffset + 10)...Z-range set by SRA cmd]
 EXAMPLE: #A1PAZ100,200,300,400,500,600,700,800
@@ -225,7 +219,7 @@ elif action == "liha_z":
   t.do_cmd(cmd,"A1")
 
   '''
-  PSY		Ys		Y-SPACING OF TIPS:
+  Command: PSY - Ys; Y-SPACING OF TIPS:
 Spaces the eight tips in Y-direction. The Y-space axis parameter is the distance from tip to tip.	
 Ys:	space in 0.1 mm [90...380]  min. distance 9 mm,  max. distance 38 mm
 EXAMPLE: #A1PSY360
@@ -340,7 +334,7 @@ elif action == "go_fl_waste":
 
 
   '''
-  MDT - MOVE TIP, DETECT LIQUID, SUBMERGE:
+  Command: MDT - MOVE TIP, DETECT LIQUID, SUBMERGE:
 
 TipSelect, Submerge, Z-start, Z-max, Z-add1...Z-add8
 MOVE TIP, DETECT LIQUID, SUBMERGE:
@@ -362,7 +356,7 @@ elif action == "move_detect":
 
 
   '''
-  RSD		  Selector, Type	  REPORT SYSTEM DEVICES:
+  Command: RSD - Selector, Type; REPORT SYSTEM DEVICES:
   Reports the number of  devices connected to the system in binary or decimal format.
   Selector:	0 = Report number of Arms
       1 = Report number of Diluters
@@ -387,7 +381,7 @@ elif action == "report_system_devices":
 #M1RDS1,1
 
   '''
-  RVM		  channel		  REPORT THE SERVICE CHANNEL VOLT METER:
+  Command: RVM - channel; REPORT THE SERVICE CHANNEL VOLT METER:
   With this function it's possible to measure any voltages on the CU board with the Service Channel connector. The first channel (0) allows the user to measure any voltages in the range between 0..5 Volt with a resolution of 10mV. The second (1) channel has a range between 0..24 Volt with a resolution of 100mV.
   channel:	[0..1]
   EXAMPLE: #M1RVM0
@@ -401,7 +395,7 @@ elif action == "volt_meter":
 
 
   '''
-  GFC		GROUP FEED COMMAND:
+  Command: GFC - GROUP FEED COMMAND:
 If several commands should be started synchrony, they can be loaded first by this command without any execution. With GSC all feed action can be started at the same time. This function supports all installed devices.
 EXAMPLE: 	#M1GFC			(start feeding process)
 		#A1MAZ500,500,500,500	(feed command to device 	#A1)
